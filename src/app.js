@@ -19,7 +19,8 @@ app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
 // Middlewares (Peticiones antes de que vngan los usuarios)
-app.use(morgan('dev')); //Genera en la term,inal mensaje sobre la petición realizada
+app.use(morgan('dev')); //Genera en la terminal mensaje sobre la petición realizada
+
 // Conexion a la base de datos para la base de datos mysql
 app.use(myConnection(mysql,{
     host: 'localhost',
@@ -28,13 +29,13 @@ app.use(myConnection(mysql,{
     port: '3306',
     database: 'Pasaporte_App'
 },'single'));
+app.use(express.urlencoded({extends: false}));
 
-
-/* 
-Routes (redireción a las rutas correspondinetes).
+/* *************************************************************************************************
+Routes (redireción a las rutas correspondientes).
 Anteriormente el objeto (ServiceRoutes) se llamaba (CustomerRoutes), sin embargo se cambio a un 
 nombre más neutral ya que el archivo "rutas" contendra TODAS las rutas de las funciones
-*/
+*************************************************************************************************** */
 app.use('/',ServiceRoutes);
 
 // Static files (Archivos Staticos, para el css ,imagenes, ect...)

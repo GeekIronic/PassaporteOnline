@@ -8,17 +8,15 @@ se llamaba "customer"
 const express = require('express');
 const router = express.Router();
 
-
-
-router.get('/',(req,res) =>{
-    res.render('Index', {Title: 'Pasaporte app - login'});
-    console.log('Ruta Raiz, a primera página en mostrarse')
-});
-
-
-
-
 const loginController =require('../controllers/loginController')
+
+router.get('/',loginController.loginsession);
+router.post('/LoginPassport',loginController.loginpassport)
+
+
+
+
+
 
 //router.get('/', loginController.LoginSession);
 

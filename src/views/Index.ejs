@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="GeekIronic">
-        <title><%=Title%></title>
+        <title>Document</title>
         <link rel="stylesheet" href="/css/index-pri.css">
     </head>
     <body>
@@ -13,11 +13,16 @@
             
         </section>
         <section class="right-from" id="right-from">
-            <form action="" method="post">
-                <h2>Acceso Login</h2>
+            <form action="/LoginPassport" method="post">
+                <h2>Pasaporte - Login</h2>
                 <label for="txt_TypeId">Tipo Identificación</label>
                 <select name="txt_TypeId" id="txt_TypeId">
-                    <option value=""></option>
+                    <option value="txt-TypeIdDefault" selected disabled>Seleccione el tipo de Identificación</option>
+                    <% if (dataListTypeID){ %>
+                          <% for (var i = 0; i < dataListTypeID.length; i++){ %>
+                            <option value="<%= dataListTypeID[i].IdTipo %>"><%= dataListTypeID[i].TdNombre %></option>
+                         <% } %> 
+                   <% } %>
                 </select>
                 <label for="txt_Ident">Identificación</label>
                 <input type="text" name="txt_Ident" id="txt_Ident">
